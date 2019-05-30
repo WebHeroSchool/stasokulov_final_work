@@ -1,0 +1,162 @@
+:root {
+    --lightGray: #DFDFE6;
+    --gray: #ADADB9;
+    --darkGray: #83838E;
+    --blue: #0094FF;
+    --red: #E00000;
+    --yellow: #FFC700;
+}
+
+body {
+    font-family: "Montserrat";
+    margin: 0 0 0 0;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.invis {
+    display: none;
+}
+
+.wrapper {
+    max-width: 1231px;
+    margin: auto;
+    padding: 41px 100px 0 100px;
+}
+
+@media (max-width:1030px) {
+    .wrapper {
+        padding: 30px 70px 0 70px;
+    }
+}
+
+@media (max-width:800px) {
+    .wrapper {
+        padding: 30px 40px 0 40px;
+    }
+}
+
+@media (max-width:500px) {
+    .wrapper {
+        padding: 30px 20px 0 20px;
+    }
+}
+
+.highlightOrange {
+    color: var('--yellow');
+}
+
+.highlightBlue {
+    color: var('--blue');
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+/*Contact me*/
+.contactMe_mobileMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 52px 0;
+}
+
+.contactMe__title_mobileMenu {
+    font-weight: 600;
+    font-size: 18px;
+    color: var('--blue');
+    margin: 0 0 3px 0;
+}
+
+.contactMe__contactData_mobileMenu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 35px 0;
+    cursor: pointer;
+}
+
+.contactMe__contactData-item_mobileMenu {
+    text-align: center;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--gray);
+    margin: 0 0 2px 0;
+}
+
+/*Mobile menu*/
+.menu_mobileMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 71px 0;
+}
+
+.menu__item_mobileMenu{
+    margin: 0 0 34px 0;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--blue);
+}
+
+/*Main menu*/
+.menu__item_mainMenu {
+    margin: 0 48px 0 0;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+.menu__item_mainMenu:last-child {
+    margin: 0 0 0 0;
+}
+
+.menu__item_mainMenu:hover {
+    color: var(--blue);
+    border-bottom: #0094FF solid 1px;
+}
+
+@media (max-width:800px) {
+    .menu_mainMenu {
+    display: none;
+    }
+}
+
+.title-page {
+    font-weight: 600;
+    font-size: 33px;
+    color: var(--blue);
+}
+
+@media (max-width:800px) {
+    .title-page {
+        font-size: 26px;
+    }
+}
+
+@media (max-width:500px) {
+    .title-page {
+        font-size: 18px;
+    }
+}
+

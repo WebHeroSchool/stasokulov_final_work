@@ -1,0 +1,208 @@
+.git {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0 0 170px 0;
+
+
+    &__intro {
+        position: sticky;
+        top: 100px;
+        width: 42%;
+        margin: 0 9% 25px 0;
+        font-size: 33px;
+    }
+
+    &__intro__title {
+        font-weight: 600;
+        color: var(--blue);
+        font-size: 33px;
+        margin: 0 0 7px 0;
+    }
+
+    &__intro__text {
+        font-weight: normal;
+        color: #000;
+    }
+
+    &__main {
+        width: 42%;
+        font-size: 23px;
+    }
+
+    &__main__list {
+        counter-reset: list;
+    }
+
+    &__main__item {
+        list-style-type: none;
+        margin: 0 0 25px 0;
+    }
+
+    &__main__item__title {
+        font-weight: bold;
+        color: var(--darkGray);
+        counter-increment: list;
+        margin: 0 0 6px 0;
+    }
+
+    &__main__item__text {
+        color: #000;
+        font-weight: normal;
+    }
+
+    &__main__item__text-element {
+        font-weight: normal;
+        font-size: 16px;
+        color: var(--gray);
+        margin: 0 16px 0 0;
+    }
+
+    &__main__item__text-element__marker {
+        display: inline-block;
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+        background-color: var(--darkGray);
+    }
+
+    &__main__item__text-element__marker_JS {
+        background-color: var(--yellow);
+    }
+
+    &__main__item__text-element__marker_HTML {
+        background-color: var(--red);
+    }
+
+    &__main__item__text-element__marker_CSS {
+        background-color: var(--blue);
+    }
+
+    &__main__item__text-element__star {
+        display: inline-block;
+        background: inline('../source/img/inline/star.svg') no-repeat;
+        background-size: cover;
+        width: 17px;
+        height: 17px;
+    }
+
+    &__main__item__text-element__fork {
+        display: inline-block;
+        background: inline('../source/img/inline/fork.svg') no-repeat;
+        background-size: cover;
+        width: 12px;
+        height: 16px;
+    } 
+}
+
+.paginator__item {
+    margin: 5px;
+    cursor: pointer;
+
+    &_active {
+        color: var(--blue);
+    }    
+
+    &:hover {
+        color: var(--blue);
+    }
+}
+
+@media (max-width:800px) {
+    .git {
+        flex-direction: column;
+        margin: 0 0 155px 0;
+
+        &__intro {
+            position: relative;
+            top: 0;
+            width: 100%;          
+            font-size: 26px;
+        }
+
+        &__intro__title {
+            font-size: 26px;
+        }
+
+        &__main {
+            width: 100%;
+            font-size: 26px;
+        }
+
+        &__main__item {
+            margin: 0 0 50px 0;            
+        }
+
+        &__main__item__text-element {
+            font-size: 12px;
+            margin: 0 15px 0 0;
+        }
+
+        &__main__item__text-element__marker {
+            width: 12px;
+            height: 12px;
+        }
+
+        &__main__item__text-element__star {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+        }
+
+        &__main__item__text-element__fork {
+            width: 10px;
+            height: 12px;
+        }
+    }
+}
+
+@media (max-width:500px) {
+    .git {
+
+        margin: 0 0 100px 0;
+        
+        &__intro {
+            font-size: 18px;
+            margin: 0 0 24px 0;
+        }
+
+        &__intro__title {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        &__main {
+            margin: 0 0 0 0;
+            font-size: 15px;
+        }
+
+        &__main__item {
+            margin: 0 0 10px 0;
+        }
+
+        &__main__item__title {
+            margin: 0 0 0 0;
+        }
+
+        &__main__item__text-element {
+            font-size: 8px;
+            margin: 0 10px 0 0;
+        }
+
+        &__main__item__text-element__marker {
+            width: 9px;
+            height: 9px;
+        }
+
+        &__main__item__text-element__star {
+            width: 10px;
+            height: 10px;
+        }
+    
+        &__main__item__text-element__fork {
+            width: 7px;
+            height: 9px;
+        }
+    }
+}
