@@ -58,19 +58,19 @@ fetch(linkToMyGit)
 
     //Генерация блоков с данными репозиториев
     function gitItemCreator(element) {
-        let template = document.querySelector('.git__main__item_template');
+        let template = document.querySelector('.git__template');
         let item = template.cloneNode(true); //Клонирую шаблон блока
-        item.classList.remove('git__main__item_template');
+        item.classList.remove('git__template');
         item.classList.remove('invis');
         item.classList.add('git__main__item');
 
-        let link = item.querySelector('.git__main__item__innerWrap');
-        let title = item.querySelector('.git__main__item__title');
-        let marker = item.querySelector('.git__main__item__text-element__marker');
-        let progLang = item.querySelector('.git__main__item__text-element__progLang');
-        let star = item.querySelector('.git__main__item__text-element__star').parentNode;
-        let fork = item.querySelector('.git__main__item__text-element__fork').parentNode;
-        let dateUpdate = item.querySelector('.git__main__item__text-element__update');
+        let link = item.querySelector('.git__item-innerWrap');
+        let title = item.querySelector('.git__item-title');
+        let marker = item.querySelector('.marker');
+        let progLang = item.querySelector('.text-element_progLang');
+        let star = item.querySelector('.text-element_star').parentNode;
+        let fork = item.querySelector('.text-element_fork').parentNode;
+        let dateUpdate = item.querySelector('.text-element_update');
 
         link.href = element.html_url;
         title.innerHTML = element.name;
@@ -78,13 +78,13 @@ fetch(linkToMyGit)
 
         switch(element.language) {
             case 'HTML':
-                marker.classList.add('git__main__item__text-element__marker_HTML');
+                marker.classList.add('marker_HTML');
                 break;
             case 'CSS':
-                marker.classList.add('git__main__item__text-element__marker_CSS');
+                marker.classList.add('marker_CSS');
                 break;
             case 'JS':
-                marker.classList.add('git__main__item__text-element__marker_JS');
+                marker.classList.add('marker_JS');
                 break;
         };
 
@@ -106,7 +106,7 @@ fetch(linkToMyGit)
 
     //Наполнение меню пагинации
     function createPagination(pageCount) {
-        let paginator = document.querySelector('.git__main__paginator');
+        let paginator = document.querySelector('.paginator');
         let paginationItem = document.querySelector('.paginator__item').cloneNode(true);
         paginationItem.classList.remove('invis');
         //Подсвечиваем цифру 1
@@ -119,7 +119,7 @@ fetch(linkToMyGit)
 
     //Обработчик кликов по меню пагинации
     function goPagination() {
-        let paginator = document.querySelector('.git__main__paginator');
+        let paginator = document.querySelector('.paginator');
         paginator.addEventListener('click', (e) => {
             if(e.target.className === 'paginator__item') {
 

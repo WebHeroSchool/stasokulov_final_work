@@ -25,14 +25,14 @@
         margin: 0 0 22px 0;
     }
 
-    &__title__side {
+    &__title-side {
         font-weight: normal;
         font-size: 23px;
         color: var(--gray);
         cursor: pointer;
     }
 
-    &__title__side:hover {
+    &__title-side:hover {
         color: var(--blue);
     }
 
@@ -43,13 +43,13 @@
         width: 100%;
     }
 
-    &__example__item-wrap-width {
+    &__item-wrap-width {
         width: 49%;
         position: relative;
         margin: 0 0 26px 0;
     }
 
-    &__example__item-wrap-height {
+    &__item-wrap-height {
         top: 0;
         right: 0;
         bottom: 0;
@@ -57,7 +57,7 @@
         padding-top: 58%;
     }
 
-    &__example__item {
+    &__item {
         position: absolute;
         top: 0;
         left: 0;
@@ -72,7 +72,7 @@
         background-size: contain;
     }
 
-    &__example__item__image {
+    &__item-image {
         position: absolute;
         top: 0;
         right: 0;
@@ -82,18 +82,18 @@
         background-size: cover;
     }
 
-    &__example__item__image:hover {
+    &__item-image:hover {
         opacity: 0;
     }
 
-    &__example__item__title {
+    &__item-title {
         position: relative;
         font-weight: 600;
         font-size: 20px;
         color: #FFFFFF;
     }
 
-    &__example__item__title:before {
+    &__item-title:before {
         content: '';
         position: absolute;
         bottom: -10px;
@@ -102,7 +102,7 @@
         background-color: #FFFFFF;
     }
 
-    &__example__item__footer {
+    &__item-footer {
         font-weight: normal;
         font-size: 20px;
         color: #FFFFFF;
@@ -113,16 +113,16 @@
     .recentWorks {
         margin: 0 0 170px 0;
 
-        &__example__item {
+        &__example-item {
             padding: 14px 14px 18px 22px;
         }
 
-        &__title__side {
+        &__title-side {
             font-size: 19px;
         }
 
-        &__example__item__title,
-        &__example__item__footer {
+        &__item-title,
+        &__item-footer {
             font-size: 10px;
         }
     }
@@ -132,17 +132,17 @@
     .recentWorks {
         margin: 0 0 80px 0;
 
-        &__example__item-wrap-width,
-        &__example__item-wrap-height {
+        &__item-wrap-width,
+        &__item-wrap-height {
             width: 100%;
         }
 
-        &__example__item {
+        &__item {
             min-width: 279px;
             min-height: 162px;
         }
     
-        &__title__side {
+        &__title-side {
             font-size: 15px;
         }
     }

@@ -1,49 +1,17 @@
 .skills {
 
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
     margin: 0 0 160px 0;
 
     &__intro {
-        position: sticky;
-        top: 100px;
-        width: 42%;
         margin: 0 9% 79px 0;
-        font-size: 33px;
     }
 
-    &__intro__title {
-        font-weight: 600;
-        color: var(--blue);
-        font-size: 33px;
-        margin: 0 0 7px 0;
-    }
-
-    &__intro__text {
-        font-weight: normal;
-        color: #000;
-    }
-
-    &__main {
-        width: 42%;
-        font-size: 23px;
-    }
-
-    &__main__list {
-        counter-reset: list;
-    }
-
-    &__main__item {
+    &__item {
         list-style-type: none;
         margin: 0 0 79px 0;
     }
 
-    &__main__item__innerWrap {
-
-    }
-
-    &__main__item__title {
+    &__item-title {
         font-weight: bold;
         color: var(--darkGray);
         counter-increment: list;
@@ -55,7 +23,7 @@
         }
     }
 
-    &__main__item__text {
+    &__item-text {
         color: #000;
         font-weight: normal;
     }
@@ -63,28 +31,11 @@
 
 @media (max-width:800px) {
     .skills {
-        flex-direction: column;
+
         margin: 0 0 175px 0;
 
         &__intro {
-            position: relative;
-            top: 0;
-            width: 100%;
             margin: 0 0 62px 0;
-            font-size: 26px;
-        }
-
-        &__intro__title {
-            font-size: 26px;
-        }
-
-        &__main {
-            width: 100%;
-            font-size: 26px;
-        }
-
-        &__main__item {
-            margin: 0 0 50px 0;            
         }
     }
 }
@@ -96,23 +47,13 @@
         
         &__intro {
             margin: 0 0 62px 0;
-            font-size: 18px;
         }
 
-        &__intro__title {
-            font-size: 18px;
-        }
-
-        &__main {
-            margin: 0 0 0 0;
-            font-size: 15px;
-        }
-
-        &__main__item {
+        &__item {
             margin: 0 0 40px 0;
         }
 
-        &__main__item__title {
+        &__item-title {
             font-weight: 500;
         }
     }

@@ -1,4 +1,4 @@
-let viewAll = document.querySelectorAll('.recentWorks__title__side');
+let viewAll = document.querySelectorAll('.recentWorks__title-side');
 let hiddenWorks = document.querySelector('.recentWorks__example').querySelectorAll('.invis');
 
 //На кнопку закрытия и открытия вешаем слушатель клика.
