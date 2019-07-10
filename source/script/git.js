@@ -1,47 +1,42 @@
-//Подтягиваю свои репозитории с GitHub
 const username = 'stasokulov';
 let linkToMyGit = `https://api.github.com/users/${username}`;
 let numRepos = '';
-let perPage = 10; //Репозиториев на странице
-let page = 1; //Какая страница подгрузится
+let reposPerPage = 10;
+let pageForLoad = 1;
 
-getRepos(page);
-goPagination(); //Включаю слушатель кликов по меню пагинации
+getRepos(pageForLoad);
+goPagination();
 
-//Запрашиваю данные репозиториев
-function getRepos(page) {
-    //Сначала запускаем прелоадер
+function getRepos(pageForLoad) {
+
     let preloader = document.querySelector('.preloader__wrap_git');
-    preloader.classList.remove('invis');
+    preloader.classList.remove('hidden');
 
-    let linkToMyRepos = `${linkToMyGit}/repos?per_page=${perPage}&page=${page}`;
+    let linkToMyRepos = `${linkToMyGit}/repos?per_page=${reposPerPage}&page=${pageForLoad}`;
     fetch(linkToMyRepos) 
     .then(response => {
-        if (response.status == 200) {
-            return response.json() //Передаю дальше JSON с данными
+        if (response.status === 200) {
+            return response.json();
         } else {
-            alert('Запрос на github.com не удался. Ошибка: ' + response.status)
+            alert('Запрос на github.com не удался. Ошибка: ' + response.status);
         }
     })
     .then(arr => {
-        //Обрабатываю каждый элемент массива
         arr.forEach( (element) => {
-            gitItemCreator(element); //Создаю элемент в списке репозиториев
+            gitItemCreator(element);
         });
     })
     .then( () => {
-        //Убираем прелоадер
-        preloader.classList.add('invis');
-    })
+        preloader.classList.add('hidden');
+    });
 };
 
-//Запашиваю количество репозиториев
 fetch(linkToMyGit)
     .then(response => {
-        if (response.status == 200) {
-            return response.json() //Передаю дальше JSON с данными
+        if (response.status === 200) {
+            return response.json();
         } else {
-            alert('Запрос на github.com не удался. Ошибка: ' + response.status)
+            alert('Запрос на github.com не удался. Ошибка: ' + response.status);
         }
     })
     .then(json => {
@@ -49,100 +44,133 @@ fetch(linkToMyGit)
         return numRepos;           
     })
     .then(numRepos => {
-        //Вычисляю количество страниц пагинации
-        let numPages = Math.ceil(numRepos/perPage);
+        let numPages = Math.ceil(numRepos/reposPerPage);
         for(let i = 1; i <= numPages; i++) {
             createPagination(i);
         };
     });
 
-    //Генерация блоков с данными репозиториев
-    function gitItemCreator(element) {
-        let template = document.querySelector('.git__template');
-        let item = template.cloneNode(true); //Клонирую шаблон блока
-        item.classList.remove('git__template');
-        item.classList.remove('invis');
-        item.classList.add('git__main__item');
+function gitItemCreator(element) {
+    const container = document.querySelector('.git__list');
 
-        let link = item.querySelector('.git__item-innerWrap');
-        let title = item.querySelector('.git__item-title');
-        let marker = item.querySelector('.marker');
-        let progLang = item.querySelector('.text-element_progLang');
-        let star = item.querySelector('.text-element_star').parentNode;
-        let fork = item.querySelector('.text-element_fork').parentNode;
-        let dateUpdate = item.querySelector('.text-element_update');
+    const item = createElement('li');
+    item.classList.add('git__main__item');
 
-        link.href = element.html_url;
-        title.innerHTML = element.name;
-        progLang.innerHTML = element.language;
+    const link = createElement('a');
+    link.classList.add('git__item-innerWrap');
+    link.classList.add('link');
+    link.href = element.html_url;
+    link.target = 'blank';
 
-        switch(element.language) {
-            case 'HTML':
-                marker.classList.add('marker_HTML');
-                break;
-            case 'CSS':
-                marker.classList.add('marker_CSS');
-                break;
-            case 'JS':
-                marker.classList.add('marker_JS');
-                break;
-        };
+    const title = createElement('p');
+    title.classList.add('git__item-title');
+    title.innerHTML = element.name;
 
-        if(element.stargazers_count) {
-            star.appendChild( document.createTextNode(element.stargazers_count) );
-        } else {
-            star.remove();
-        };
+    const string = createElement('p');
+    string.classList.add('git__item-text');
 
-        if(element.forks_count) {
-            fork.appendChild( document.createTextNode(element.forks_count) );
-        } else {
-            fork.remove();
-        };
-        
-        dateUpdate.innerHTML = 'Обновлено ' + new Date(element.updated_at).toLocaleDateString('ru') + 'г.';
-        template.parentNode.appendChild(item);
+    const marker = createElement('span');
+    marker.classList.add('marker');
+    switch(element.language) {
+        case 'HTML':
+            marker.classList.add('marker_HTML');
+            break;
+        case 'CSS':
+            marker.classList.add('marker_CSS');
+            break;
+        case 'JS':
+            marker.classList.add('marker_JS');
+            break;
     };
 
-    //Наполнение меню пагинации
-    function createPagination(pageCount) {
-        let paginator = document.querySelector('.paginator');
-        let paginationItem = document.querySelector('.paginator__item').cloneNode(true);
-        paginationItem.classList.remove('invis');
-        //Подсвечиваем цифру 1
-        if(pageCount === 1) {
-            paginationItem.classList.add('paginator__item_active');
+    const progLang = createElement('span');
+    progLang.classList.add('text-element');
+    progLang.classList.add('text-element_progLang');
+    progLang.innerHTML = element.language;
+
+    const starWrap = createElement('span');
+    starWrap.classList.add('text-element');
+
+    const star = createElement('span');
+    star.classList.add('text-element_star');
+
+    const forkWrap = createElement('span');
+    forkWrap.classList.add('text-element');
+
+    const fork = createElement('span');
+    fork.classList.add('text-element_fork');
+
+    const dateUpdate = createElement('span');
+    dateUpdate.classList.add('text-element');
+    dateUpdate.classList.add('text-element_update');
+    dateUpdate.innerHTML = 'Обновлено ' + new Date(element.updated_at).toLocaleDateString('ru') + 'г.';
+
+    starWrap.appendChild(star);
+    forkWrap.appendChild(fork);
+
+    string.appendChild(marker);
+    string.appendChild(progLang);
+    string.appendChild(starWrap);
+    string.appendChild(forkWrap);
+    string.appendChild(dateUpdate);
+
+    link.appendChild(title);
+    link.appendChild(string);
+
+    item.appendChild(link);
+
+    if(element.stargazers_count) {
+        starWrap.appendChild( document.createTextNode(element.stargazers_count) );
+    } else {
+        starWrap.remove();
+    };
+
+    if(element.forks_count) {
+        fork.appendChild( document.createTextNode(element.forks_count) );
+    } else {
+        fork.remove();
+    };
+
+    container.appendChild(item);
+};
+
+function createPagination(pageCount) {
+    let paginator = document.querySelector('.paginator');
+    let paginationItem = document.querySelector('.paginator__item').cloneNode(true);
+    paginationItem.classList.remove('hidden');
+    if(pageCount === 1) {
+        paginationItem.classList.add('paginator__item_active');
+    };
+    paginationItem.appendChild( document.createTextNode(pageCount) );
+    paginator.appendChild( paginationItem );
+};
+
+function goPagination() {
+    let paginator = document.querySelector('.paginator');
+    paginator.addEventListener('click', (e) => {
+        if(e.target.className === 'paginator__item') {
+
+            let allRepos = document.querySelectorAll('.git__main__item');
+            allRepos = Array.from(allRepos);
+            allRepos.forEach(element => {
+                element.remove();
+            });
+
+            let page = e.target.innerText;
+            getRepos(page);
+
+            let paginationItems = document.querySelectorAll('.paginator__item');
+            paginationItems = Array.from(paginationItems);
+            paginationItems.forEach(element => {
+                element.classList.remove('paginator__item_active');                    
+            });
+
+            e.target.classList.add('paginator__item_active');
         };
-        paginationItem.appendChild( document.createTextNode(pageCount) );
-        paginator.appendChild( paginationItem );
-    };
+    });
+};
 
-    //Обработчик кликов по меню пагинации
-    function goPagination() {
-        let paginator = document.querySelector('.paginator');
-        paginator.addEventListener('click', (e) => {
-            if(e.target.className === 'paginator__item') {
-
-                //Удаляем репозитории, загруженные ранее
-                let allRepos = document.querySelectorAll('.git__main__item');
-                allRepos = Array.from(allRepos);//Превращаем массивоподобный объект в массив для старых браузеров.
-                allRepos.forEach(element => {
-                    element.remove();
-                });
-
-                //Показываем репозитории, чья дата-метка совпадает с числом по которому кликнули
-                let page = e.target.innerText;
-                getRepos(page);
-
-                //Снимаем подсветку с чисел в меню пагинации
-                let paginationItems = document.querySelectorAll('.paginator__item');
-                paginationItems = Array.from(paginationItems);//Превращаем массивоподобный объект в массив для старых браузеров.
-                paginationItems.forEach(element => {
-                    element.classList.remove('paginator__item_active');                    
-                });
-
-                //Подсвечиваем кликнутое число
-                e.target.classList.add('paginator__item_active');
-            };
-        });
-    };
+function createElement(tag) {
+    const element = document.createElement(tag);
+    return element;
+};

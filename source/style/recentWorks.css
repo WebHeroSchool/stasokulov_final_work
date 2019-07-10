@@ -10,12 +10,12 @@
         background: url(img/catchMouse.jpg);
     }
 
-    &__apiYandexMaps {
-        background: url(img/apiYandexMaps.jpg);
+    &__trucking {
+        background: url(img/trucking.jpg);
     }
 
-    &__ajaxJson {
-        background: url(img/ajaxJson.jpg);
+    &__news-quest {
+        background: url(img/news-quest.jpg);
     }
 
     &__title {
@@ -90,7 +90,7 @@
         position: relative;
         font-weight: 600;
         font-size: 20px;
-        color: #FFFFFF;
+        color: #FFF;
     }
 
     &__item-title:before {
@@ -99,13 +99,13 @@
         bottom: -10px;
         width: 37px;
         height: 2px;
-        background-color: #FFFFFF;
+        background-color: #FFF;
     }
 
     &__item-footer {
         font-weight: normal;
         font-size: 20px;
-        color: #FFFFFF;
+        color: #FFF;
     }
 }
 

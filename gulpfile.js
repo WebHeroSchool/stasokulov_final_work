@@ -5,7 +5,8 @@ const clean = require('gulp-clean');
 const cssnano = require('gulp-cssnano');
 const concat = require('gulp-concat');
 const env = require('gulp-env');
-const glob = require("glob")
+const eslint = require('gulp-eslint');
+const glob = require("glob");
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
 const mustache = require("gulp-mustache");
@@ -13,7 +14,11 @@ const nested = require('postcss-nested');
 const postcss = require('gulp-postcss');
 const postcssPresetEnv = require('postcss-preset-env');
 const postcssCustomProperties = require('postcss-custom-properties');
+const reporter  = require('postcss-reporter');
 const rename = require("gulp-rename");
+const rulesScripts = require('./eslintrc.json');
+const rulesStyles = require('./stylelintrc.json');
+const stylelint = require('stylelint');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const watch = require('gulp-watch');
@@ -107,7 +112,29 @@ gulp.task('assets', (done) => {
     done();
 });
 
-gulp.task('default', gulp.series( 'clean', gulp.parallel('compile', 'css', 'assets', 'js') ) );
+
+
+gulp.task('eslint', () => {
+    return gulp.src(paths.lint.scripts)
+        .pipe( eslint(rulesScripts) )
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
+gulp.task('stylelint', () => {
+    return gulp.src(paths.lint.styles)
+    .pipe(postcss([
+        stylelint(rulesStyles),
+        reporter({
+            clearMessages: true,
+            throwError: true
+        })
+    ]));
+});
+
+gulp.task( 'lint', gulp.parallel('stylelint', 'eslint') );
+
+gulp.task('default', gulp.series('lint', 'clean', gulp.parallel('compile', 'css', 'assets', 'js') ) );
 
 gulp.task('watch', () => {
     gulp.watch(paths.src.dir, gulp.series('default'));

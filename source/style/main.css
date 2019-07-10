@@ -12,30 +12,13 @@ body {
     margin: 0 0 0 0;
 }
 
-h1, h2 {
-    margin: 0;
-}
-
-a {
+.link {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
-p {
-    margin: 0;
-}
-
-ul {
-    padding: 0;
-    margin: 0;
-}
-
-li {
-    list-style-type: none;
-}
-
-.invis {
+.hidden {
     display: none;
 }
 
@@ -75,7 +58,7 @@ li {
     text-decoration: underline;
 }
 
-/*Contact me*/
+
 .contactMe_mobileMenu {
     display: flex;
     flex-direction: column;
@@ -98,6 +81,7 @@ li {
 }
 
 .contactMe__contactData-item_mobileMenu {
+    list-style-type: none;
     text-align: center;
     font-weight: 500;
     font-size: 15px;
@@ -105,7 +89,7 @@ li {
     margin: 0 0 2px 0;
 }
 
-/*Mobile menu*/
+
 .menu_mobileMenu {
     display: flex;
     flex-direction: column;
@@ -120,7 +104,7 @@ li {
     color: var(--blue);
 }
 
-/*Main menu*/
+
 .menu__item_mainMenu {
     margin: 0 48px 0 0;
     color: var(--gray);
@@ -138,22 +122,22 @@ li {
 
 @media (max-width:800px) {
     .menu_mainMenu {
-    display: none;
+        display: none;
     }
 }
 
-/*Footer menu*/
+
 .menu__item_footer {
     margin: 0 0 10px 0;
     color: var(--lightGray);
 }
 
-/* */
 
 .title-page {
     font-weight: 600;
     font-size: 33px;
     color: var(--blue);
+    margin: 0;
 }
 
 @media (max-width:800px) {
@@ -168,7 +152,6 @@ li {
     }
 }
 
-/*achievement*/
 
 .achievement {
     position: relative;
@@ -193,6 +176,7 @@ li {
     &__intro-text {
         font-weight: normal;
         color: #000;
+        margin: 0;
     }
 
     &__main {
@@ -202,6 +186,8 @@ li {
 
     &__list {
         counter-reset: list;
+        padding: 0;
+        margin: 0;
     }
 }
 

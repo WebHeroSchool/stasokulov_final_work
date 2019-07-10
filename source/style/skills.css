@@ -26,6 +26,7 @@
     &__item-text {
         color: #000;
         font-weight: normal;
+        margin: 0;
     }
 }
 

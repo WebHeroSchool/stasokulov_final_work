@@ -21,7 +21,6 @@
         color: var(--gray);
         display: flex;
         justify-content: space-between;
-        /*width: 474px;*/
     }
 
     &__mobileMenu {
@@ -40,10 +39,10 @@
 }
 
 @keyframes slideMobileMenu {
-from {transform: translateY(50%);
+    from {transform: translateY(50%);
         opacity: 0;}
-to {transform: translateY(0);
-    opacity: 1;}
+    to {transform: translateY(0);
+        opacity: 1;}
 }
 
 .burger {

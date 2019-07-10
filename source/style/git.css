@@ -19,12 +19,15 @@
     }
 
     &__item-text {
+        display: flex;
         color: #000;
         font-weight: normal;
+        margin: 0;
     } 
 }
 
 .text-element {
+    display: flex;
     font-weight: normal;
     font-size: 16px;
     color: var(--gray);
@@ -36,6 +39,7 @@
         background-size: cover;
         width: 17px;
         height: 17px;
+        margin: 0 5px 0 0;
     }
     
     &_fork {
@@ -44,6 +48,7 @@
         background-size: cover;
         width: 12px;
         height: 16px;
+        margin: 0 5px 0 0;
     }
 }
 
@@ -53,6 +58,7 @@
     width: 17px;
     height: 17px;
     background-color: var(--darkGray);
+    margin: 0 5px 0 0;
 
     &_JS {
         background-color: var(--yellow);

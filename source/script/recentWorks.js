@@ -1,17 +1,14 @@
 let viewAll = document.querySelectorAll('.recentWorks__title-side');
-let hiddenWorks = document.querySelector('.recentWorks__example').querySelectorAll('.invis');
+let hiddenWorks = document.querySelector('.recentWorks__example').querySelectorAll('.hidden');
 
-//На кнопку закрытия и открытия вешаем слушатель клика.
-viewAll = Array.from(viewAll);//Превращаем массивоподобный объект в массив для старых браузеров.
+viewAll = Array.from(viewAll);
 viewAll.forEach(button => {
     button.addEventListener('click', () => {
-        //Клик отображает скрытые работы и скрывает их при новом клике
         hiddenWorks.forEach(element => {
-            element.classList.toggle('invis');
+            element.classList.toggle('hidden');
         });
-        //Клик по любой из кнопок скрывает одну и показывает другую
         viewAll.forEach(button => {
-            button.classList.toggle('invis');
+            button.classList.toggle('hidden');
         });
     });
 });
